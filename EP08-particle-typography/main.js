@@ -2,8 +2,6 @@
 const calm = matchMedia(
   "(prefers-reduced-motion: reduce)"
 ).matches;
-const COLORS =
-  ["#5eead4", "#a78bfa", "#ffffff"];
 
 // Canvas sized for sharp pixels.
 const canvas =
@@ -15,6 +13,26 @@ const H = innerHeight;
 canvas.width = W * dpr;
 canvas.height = H * dpr;
 ctx.scale(dpr, dpr);
+
+// Gradient: purple, cyan, yellow.
+const STOPS = [
+  [155, 92, 255],
+  [0, 217, 255],
+  [255, 196, 0],
+];
+function mix(x) {
+  const tw = ctx.measureText(
+    "DESIGN&CODE").width;
+  let t = (x - (W - tw) / 2) / tw;
+  t = Math.min(Math.max(t, 0), 1);
+  const i = Math.min(1, t * 2 | 0);
+  const f = t * 2 - i;
+  const a = STOPS[i];
+  const b = STOPS[i + 1];
+  const c = a.map((v, j) =>
+    Math.round(v + (b[j] - v) * f));
+  return `rgb(${c})`;
+}
 
 ctx.fillStyle = "#fff";
 ctx.font = "800 88px system-ui";
@@ -39,7 +57,7 @@ for (let y = 0; y < ch; y += s) {
     particles.push({
       x: hx, y: hy, hx, hy,
       vx: 0, vy: 0,
-      c: COLORS[(x + y) / s % 3],
+      c: mix(hx),
     });
   }
 }
