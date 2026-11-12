@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: radial-gradient(
+    circle at 50% 50%,
+    #12142a, #030308 70%);
+}
+
+canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
