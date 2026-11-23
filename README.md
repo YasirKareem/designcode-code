@@ -18,6 +18,7 @@
 | 4 | متجر تفاعلي بالكامل باستخدام CSS؟ | CSS | قريبًا ⏳ |
 | 5 | خلفية أورورا متحركة باستخدام CSS | CSS | قريبًا ⏳ |
 | 6 | فلترة المشاريع بحركة FLIP | JS | [افتح الكود](https://github.com/YasirKareem/designcode-code/tree/main/EP13-flip-filter-gallery) |
+| 7 | تأثير الزجاج باستخدام CSS | CSS | [افتح الكود](https://github.com/YasirKareem/designcode-code/tree/main/EP01-glass-card) |
 
 ## طريقة الاستخدام
 
