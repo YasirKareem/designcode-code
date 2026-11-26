@@ -1,0 +1,240 @@
+/* Design&Code · Cinematic cards */
+:root {
+  --ink: #05080e;
+  --gold: #f2c14e;
+  /* the hero's dark side */
+  --shade:
+    linear-gradient(var(--side),
+      rgb(5 8 14 / 0.85),
+      rgb(5 8 14 / 0.35) 48%,
+      transparent 78%),
+    linear-gradient(0deg,
+      rgb(5 8 14 / 0.7),
+      transparent 45%);
+  --side: 90deg;
+  --ease: cubic-bezier(.7, 0, .2, 1);
+  color-scheme: dark;
+}
+/* RTL: text right, arrows flip */
+[dir="rtl"] { --side: 270deg; }
+[dir="rtl"] .prev,
+[dir="rtl"] .next {
+  scale: -1 1;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: #fff;
+  font: 15px/1.5 system-ui,
+    "Segoe UI", sans-serif;
+}
+.hero {
+  /* swipes stay ours, not scrolls */
+  touch-action: pan-y;
+  /* shown if a photo fails */
+  background: linear-gradient(135deg,
+    #2b3648, var(--ink));
+}
+.shade { background: var(--shade); }
+.bg,
+.card img,
+.flyer img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.info { width: min(40%, 340px); }
+.info::before {
+  content: "Explore the World";
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+[dir="rtl"] .info::before {
+  content: "استكشف العالم";
+  letter-spacing: 0;
+}
+.place {
+  margin: 8px 0 0;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+.name {
+  margin: 2px 0 8px;
+  font: 700 clamp(30px, 5.4vw, 56px)
+    / 0.95 Georgia, serif;
+  text-transform: uppercase;
+}
+.text {
+  max-width: 30ch;
+  margin: 0;
+  opacity: 0.85;
+}
+.cards {
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.card {
+  display: block;
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: linear-gradient(135deg,
+    #2b3648, var(--ink));
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  box-shadow: 0 14px 30px
+    rgb(0 0 0 / 0.45);
+}
+.card span {
+  position: absolute;
+  inset: auto 10px 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: start;
+  text-shadow: 0 1px 6px #000;
+}
+.prev,
+.next {
+  position: fixed;
+  z-index: 4;
+  inset-block-end: 6%;
+  width: 40px;
+  height: 40px;
+  border: 1px solid
+    rgb(255 255 255 / 0.5);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+.prev { inset-inline-start: 6%; }
+.next {
+  inset-inline-start:
+    calc(6% + 52px);
+}
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+/* progress: a quarter per trip */
+.bar {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 5;
+  height: 3px;
+  background:
+    rgb(255 255 255 / 0.2);
+}
+.bar i {
+  display: block;
+  height: 100%;
+  width: calc(
+    (var(--step, 0) + 1) * 25%);
+  background: var(--gold);
+  transition: width 0.8s
+    var(--ease);
+}
+.credit {
+  position: fixed;
+  inset: auto 10px 8px auto;
+  z-index: 9;
+  margin: 0;
+  font-size: 10px;
+  opacity: 0.6;
+}
+.bg, .shade {
+  position: absolute;
+  inset: 0;
+}
+.flyer {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* 2. Layers, back to front */
+.hero {
+  position: relative;
+  height: 100dvh;
+  overflow: hidden;
+}
+.flyer {
+  position: fixed;
+  z-index: 2;
+}
+.info {
+  position: absolute;
+  z-index: 3;
+  inset-inline-start: 6%;
+  inset-block-end: 22%;
+}
+.cards {
+  position: absolute;
+  z-index: 4;
+  inset-inline-end: 5%;
+  inset-block-end: 22%;
+  display: flex;
+}
+.card {
+  width: 100px;
+  height: 144px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+/* the flyer darkens as it lands,
+   to end exactly like the hero */
+.flyer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--shade);
+  animation: dusk 1s var(--ease)
+    both;
+}
+@keyframes dusk {
+  from { opacity: 0; }
+}
+
+/* Phones: text up, cards below */
+@media (max-width: 600px) {
+  .info {
+    inset: 11% 7% auto;
+    width: auto;
+  }
+  .cards {
+    inset-inline: 7% auto;
+    inset-block-end: 19%;
+  }
+  .card {
+    width: min(92px, 26vw);
+    height: auto;
+    aspect-ratio: 92 / 130;
+  }
+  .prev { inset-inline-start: 7%; }
+  .next {
+    inset-inline-start:
+      calc(7% + 52px);
+  }
+  :root {
+    --shade:
+      linear-gradient(180deg,
+        rgb(5 8 14 / 0.8),
+        rgb(5 8 14 / 0.15) 55%,
+        rgb(5 8 14 / 0.6));
+  }
+}
+@media
+  (prefers-reduced-motion: reduce) {
+  .bar i { transition: none; }
+  .flyer::after {
+    animation-duration: 0s;
+  }
+}

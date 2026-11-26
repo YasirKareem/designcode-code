@@ -1,0 +1,22 @@
+Photos: Wikimedia Commons, 1920px renditions, unmodified.
+
+dolomites.jpg  - "Odles da Secëda Gherdëina" by Wolfgang Moroder
+                 Licence: CC BY-SA 3.0 - https://creativecommons.org/licenses/by-sa/3.0/
+                 Source: https://commons.wikimedia.org/wiki/File:Odles_da_Sec%C3%ABda_Gherd%C3%ABina.jpg
+kyoto.jpg      - "Yasaka-dori early morning with street lanterns and the Tower of Yasaka (Hokan-ji Temple), Kyoto, Japan"
+                 by Basile Morin
+                 Licence: CC BY-SA 4.0 - https://creativecommons.org/licenses/by-sa/4.0/
+                 Source: https://commons.wikimedia.org/wiki/File:Yasaka-dori_early_morning_with_street_lanterns_and_the_Tower_of_Yasaka_(Hokan-ji_Temple),_Kyoto,_Japan.jpg
+vestrahorn.jpg - "Vestrahorn and Stokksnes beach in Iceland" by Daniel Oberhaus
+                 Licence: CC BY 4.0 - https://creativecommons.org/licenses/by/4.0/
+                 Source: https://commons.wikimedia.org/wiki/File:Vestrahorn_and_Stokksnes_beach_in_Iceland.jpg
+wadi-rum.jpg   - "Wadi rum desert" by Peter Chisholm (Commons user E.3)
+                 Licence: CC0 1.0 (public domain dedication) - https://creativecommons.org/publicdomain/zero/1.0/
+                 Source: https://commons.wikimedia.org/wiki/File:Wadi_rum_desert.jpg
+
+The photos keep their own licences, separate from the code. Keep this notice
+with the files. If you adapt (edit) a CC BY-SA photo, share the adaptation
+under the same licence; unmodified copies need this attribution and licence.
+The page shows the current photo's author and licence in its corner
+(for wadi-rum.jpg it shows the Commons user name, E.3).
+The code licence does not cover these photos.
